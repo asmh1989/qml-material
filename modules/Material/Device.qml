@@ -73,4 +73,56 @@ Object {
     }
 
     readonly property bool isMobile: type == phone || type == phablet || type == tablet
+
+    //for vt
+    property int height: 0
+    property int width: 0
+    property double scale: 1.0
+    property string ip: ''
+    property int port: 23
+    property int httpport: 2324
+
+    readonly property var getColor: function(color, a){
+        if(!color || color.length !== 9) return Qt.rgba(0,0,0, a);
+        if(typeof a === 'undefined') a = 255;
+        var r = (Number(color.slice(0, 3)));
+        var g = (Number(color.slice(3, 6)));
+        var b = (Number(color.slice(6, 9)))
+        return Qt.rgba(r/255.0, g/255.0, b/255.0, a/255.0);
+    }
+
+    readonly property var isTrue: function(s){
+        return s === 'True';
+    }
+
+    readonly property var getHorizontalAlignment: function(key){
+        switch (key){
+        case 'Right':
+            return Text.AlignRight;
+        case 'Center':
+            return Text.AlignHCenter;
+        }
+
+        return Text.AlignLeft;
+    }
+
+    readonly property  var getVerticalAlignment: function(key){
+        switch (key){
+        case 'Bottom':
+            return Text.AlignBottom;
+        case 'Top':
+            return Text.AlignTop;
+        }
+
+        return Text.AlignVCenter;
+    }
+
+    readonly property var getImageUrl: function(id, mode){
+        var str = 'http://'+ip+':'+httpport+'/icon?filename='+id;
+        if(typeof mode !== 'undefined'){
+            str += '&mode='+mode;
+        }
+
+        return str;
+    }
 }

@@ -48,7 +48,7 @@ View {
             height = Math.max(height, sidebarHeight)
         }
 
-        return height
+        return Qt.platform.os === 'ios' ? height + 20 : height
     }
     property int targetHeight: actionBarHeight
     property int maxActionCount: Device.type === Device.desktop

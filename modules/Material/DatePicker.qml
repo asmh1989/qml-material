@@ -41,8 +41,8 @@ Controls.Calendar {
     style: CalendarStyle {
         gridVisible: false
 
-        property int calendarWidth: isLandscape ? Units.dp(500) : Units.dp(340)
-        property int calendarHeight: isLandscape ? Units.dp(280) : Units.dp(440)
+        property int calendarWidth: isLandscape ? Units.dp(500) : Units.dp(300)
+        property int calendarHeight: isLandscape ? Units.dp(280) : Units.dp(400)
 
         background: Rectangle {
             color: "white"
@@ -80,7 +80,7 @@ Controls.Calendar {
 					lineHeight: 0.9
 					wrapMode: Text.Wrap
 					color: Theme.dark.textColor
-					text: control.selectedDate.toLocaleString(control.__locale, "ddd, MMM dd")
+					text: control.selectedDate.toLocaleString(control.__locale, "ddd, MMM d")
 				}
 			}
         }
@@ -88,8 +88,10 @@ Controls.Calendar {
         dayOfWeekDelegate: Rectangle {
             color: "transparent"
             implicitHeight: Units.dp(30)
+
+            property int weekIndex: Qt.locale().name === 'zh_CN' ? 1 : 0
             Label {
-                text: control.__locale.dayName(styleData.dayOfWeek, Locale.NarrowFormat).substring(0, 1)
+                text: control.__locale.dayName(styleData.dayOfWeek, Locale.NarrowFormat).substring(weekIndex, weekIndex+1)
                 color: Theme.light.subTextColor
                 anchors.centerIn: parent
             }

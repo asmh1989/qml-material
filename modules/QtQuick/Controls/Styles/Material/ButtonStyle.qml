@@ -40,6 +40,8 @@ ButtonStyle {
 
     property string context: control.hasOwnProperty("context") ? control.context : "default"
 
+    property real fontsize: control.hasOwnProperty("fontsize") ? control.fontsize : Units.dp(16)
+
     background: View {
         id: background
 
@@ -104,6 +106,8 @@ ButtonStyle {
                                                                           : Theme.light.textColor
                     : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
                                              : Qt.rgba(0, 0, 0, 0.26)
+
+            font.pixelSize: control.fontsize
         }
     }
 }

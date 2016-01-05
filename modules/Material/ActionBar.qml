@@ -39,6 +39,8 @@ import Material.ListItems 0.1 as ListItem
 Item {
     id: actionBar
 
+    y: Qt.platform.os ==='ios' ? 20 : 0
+
     implicitHeight: Units.gu(1)
 
     anchors {

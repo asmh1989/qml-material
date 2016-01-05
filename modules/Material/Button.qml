@@ -88,4 +88,6 @@ Controls.Button {
                                               Theme.dark.textColor)
 
     style: MaterialStyle.ButtonStyle {}
+
+    property real fontsize
 }

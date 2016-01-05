@@ -222,6 +222,9 @@ Controls.ApplicationWindow {
             }
         });
 
+        Device.width = Screen.width;
+        Device.height = Screen.height;
+
         // Nasty hack because singletons cannot import the module they were declared in, so
         // the grid unit cannot be defined in either Device or Units, because it requires both.
         Units.gridUnit = Qt.binding(function() {
